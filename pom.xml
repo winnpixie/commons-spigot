@@ -6,7 +6,7 @@
 
   <groupId>io.github.winnpixie</groupId>
   <artifactId>hukkit</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.19.3-R0.1-SNAPSHOT</version>
+      <version>1.16.5-R0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains</groupId>
