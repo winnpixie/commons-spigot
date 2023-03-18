@@ -17,14 +17,16 @@ public class JavaAdapter implements ConfigurationAdapter {
 
     @Override
     public Object get(String key, Object def) {
-        if (!(def instanceof String) && def != null) throw new IllegalArgumentException("Non-null default value must be of type String");
+        if (!(def instanceof String) && def != null)
+            throw new IllegalArgumentException("Non-null default value must be of type String");
 
         return properties.getProperty(key, (String) def);
     }
 
     @Override
     public void set(String key, Object value) {
-        if (!(value instanceof String) && value != null) throw new IllegalArgumentException("Non-null value must be of type String");
+        if (!(value instanceof String) && value != null)
+            throw new IllegalArgumentException("Non-null value must be of type String");
 
         properties.setProperty(key, (String) value);
     }

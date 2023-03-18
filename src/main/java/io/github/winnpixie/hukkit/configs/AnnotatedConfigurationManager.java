@@ -1,13 +1,13 @@
 package io.github.winnpixie.hukkit.configs;
 
+import org.bukkit.configuration.ConfigurationSection;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.bukkit.configuration.ConfigurationSection;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * An API for the Bukkit API that allows configuration values supplied via a
@@ -78,7 +78,7 @@ public class AnnotatedConfigurationManager {
      *
      * @param cls The class to wrap
      * @return The {@link AnnotatedConfigurationManager} this method was invoked
-     *         from
+     * from
      */
     @NotNull
     public AnnotatedConfigurationManager linkClass(@NotNull Class<?> cls) {
@@ -100,7 +100,7 @@ public class AnnotatedConfigurationManager {
      *
      * @param owner The owning object to wrap
      * @return The {@link AnnotatedConfigurationManager} this method was invoked
-     *         from
+     * from
      */
     @NotNull
     public AnnotatedConfigurationManager link(@NotNull Object owner) {

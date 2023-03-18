@@ -1,8 +1,8 @@
 package io.github.winnpixie.hukkit;
 
-import java.util.regex.Pattern;
-
 import net.md_5.bungee.api.ChatColor;
+
+import java.util.regex.Pattern;
 
 public class TextHelper {
     private static final Pattern HEX_PATTERN = Pattern.compile("[a-f0-9]{6}", Pattern.CASE_INSENSITIVE);
