@@ -4,23 +4,27 @@ import io.github.winnpixie.hukkit.configs.ConfigurationAdapter;
 import org.bukkit.configuration.ConfigurationSection;
 
 public class BukkitAdapter implements ConfigurationAdapter {
-    private ConfigurationSection bukkitConfig;
+    private ConfigurationSection config;
 
-    public ConfigurationSection getBukkitConfig() {
-        return bukkitConfig;
+    public BukkitAdapter(ConfigurationSection config) {
+        this.config = config;
     }
 
-    public void setBukkitConfig(ConfigurationSection bukkitConfig) {
-        this.bukkitConfig = bukkitConfig;
+    public ConfigurationSection getConfig() {
+        return config;
+    }
+
+    public void setConfig(ConfigurationSection config) {
+        this.config = config;
     }
 
     @Override
     public Object get(String key, Object def) {
-        return bukkitConfig.get(key, def);
+        return config.get(key, def);
     }
 
     @Override
     public void set(String key, Object value) {
-        bukkitConfig.set(key, value);
+        config.set(key, value);
     }
 }

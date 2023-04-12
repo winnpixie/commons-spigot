@@ -7,6 +7,10 @@ import java.util.Properties;
 public class JavaAdapter implements ConfigurationAdapter {
     private Properties properties;
 
+    public JavaAdapter(Properties properties) {
+        this.properties = properties;
+    }
+
     public Properties getProperties() {
         return properties;
     }

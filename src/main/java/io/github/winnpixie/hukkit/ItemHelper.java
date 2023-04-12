@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.items;
+package io.github.winnpixie.hukkit;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
