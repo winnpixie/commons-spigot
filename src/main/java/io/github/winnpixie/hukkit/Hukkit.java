@@ -1,6 +1,7 @@
 package io.github.winnpixie.hukkit;
 
 import io.github.winnpixie.hukkit.commands.BaseCommand;
+import io.github.winnpixie.hukkit.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -15,6 +16,10 @@ import java.util.UUID;
 public class Hukkit {
     public static <P extends JavaPlugin> void addListener(Listener listener, P owner) {
         owner.getServer().getPluginManager().registerEvents(listener, owner);
+    }
+
+    public static <P extends JavaPlugin> void addListener(EventListener<P> listener) {
+        addListener(listener, listener.getPlugin());
     }
 
     public static <P extends JavaPlugin> boolean addCommand(BaseCommand<P> hCommand, P owner) {
