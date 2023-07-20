@@ -5,6 +5,7 @@ import io.github.winnpixie.hukkit.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -22,8 +23,8 @@ public class Hukkit {
         addListener(listener, listener.getPlugin());
     }
 
-    public static <P extends JavaPlugin> boolean addCommand(BaseCommand<P> hCommand, P owner) {
-        var pluginCmd = owner.getCommand(hCommand.getName());
+    public static <P extends JavaPlugin> boolean addCommand(BaseCommand<P> hCommand) {
+        PluginCommand pluginCmd = hCommand.getPlugin().getCommand(hCommand.getName());
         if (pluginCmd == null) return false; // Not registered in plugin.yml ?
 
         pluginCmd.setExecutor(hCommand);
