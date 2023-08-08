@@ -1,6 +1,10 @@
 package io.github.winnpixie.hukkit;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import io.github.winnpixie.hukkit.commands.BaseCommand;
+import io.github.winnpixie.hukkit.io.http.HttpClient;
 import io.github.winnpixie.hukkit.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -13,8 +17,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 
 public class Hukkit {
+    public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
     public static <P extends JavaPlugin> void addListener(Listener listener, P owner) {
         owner.getServer().getPluginManager().registerEvents(listener, owner);
     }
@@ -63,5 +70,19 @@ public class Hukkit {
 
     public static Optional<World> findWorld(UUID id) {
         return Optional.ofNullable(Bukkit.getWorld(id));
+    }
+
+    public static void checkForUpdate(int resourceId, String version, BiConsumer<String, Boolean> onCheck) {
+        HttpClient client = HttpClient.newClient();
+
+        client.setUrl(String.format("https://api.spigotmc.org/simple/0.2/index.php?action=getResource&id=%d", resourceId))
+                .onSuccess(response -> {
+                    JsonObject jsonObj = GSON.fromJson(response.getBodyAsString(), JsonObject.class);
+                    if (!jsonObj.has("current_version")) return;
+
+                    String currentVersion = jsonObj.get("current_version").getAsString();
+                    onCheck.accept(currentVersion, currentVersion.equals(version));
+                }).onFailure(response -> onCheck.accept("", false))
+                .send();
     }
 }
