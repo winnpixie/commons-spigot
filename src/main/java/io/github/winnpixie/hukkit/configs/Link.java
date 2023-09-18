@@ -1,5 +1,7 @@
 package io.github.winnpixie.hukkit.configs;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -21,5 +23,5 @@ public @interface Link {
      *
      * @return The full path
      */
-    String path();
+    @NotNull String path();
 }

@@ -1,6 +1,8 @@
 package io.github.winnpixie.hukkit.configs.adapters;
 
 import io.github.winnpixie.hukkit.configs.ConfigurationAdapter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Properties;
 
@@ -20,7 +22,8 @@ public class JavaAdapter implements ConfigurationAdapter {
     }
 
     @Override
-    public Object get(String key, Object def) {
+    @Nullable
+    public Object get(@NotNull String key, @Nullable Object def) {
         if (!(def instanceof String) && def != null)
             throw new IllegalArgumentException("Non-null default value must be of type String");
 
@@ -28,7 +31,7 @@ public class JavaAdapter implements ConfigurationAdapter {
     }
 
     @Override
-    public void set(String key, Object value) {
+    public void set(@NotNull String key, @Nullable Object value) {
         if (!(value instanceof String) && value != null)
             throw new IllegalArgumentException("Non-null value must be of type String");
 

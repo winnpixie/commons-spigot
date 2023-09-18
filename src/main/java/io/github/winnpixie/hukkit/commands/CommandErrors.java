@@ -11,6 +11,9 @@ public class CommandErrors {
     public static final BaseComponent[] PLAYERS_ONLY = new ComponentBuilder("This action is only available for players.")
             .color(ChatColor.RED)
             .create();
+    public static final BaseComponent[] CONSOLE_ONLY = new ComponentBuilder("This action is only available for the console.")
+            .color(ChatColor.RED)
+            .create();
     public static final BaseComponent[] MISSING_ARGUMENTS = new ComponentBuilder("Missing necessary arguments to execute action.")
             .color(ChatColor.RED)
             .create();

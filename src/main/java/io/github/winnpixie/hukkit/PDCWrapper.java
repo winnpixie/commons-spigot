@@ -194,6 +194,18 @@ public class PDCWrapper<P extends JavaPlugin> {
         set(key, Type.DOUBLE_ARRAY, value);
     }
 
+    public boolean has(String key) {
+        NamespacedKey realKey = getKeyByName(key);
+
+        for (NamespacedKey keyEntry : container.getKeys()) {
+            if (!keyEntry.equals(realKey)) continue;
+
+            return true;
+        }
+
+        return false;
+    }
+
     public <T, Z> boolean has(String key, PersistentDataType<T, Z> type) {
         return container.has(getKeyByName(key), type);
     }

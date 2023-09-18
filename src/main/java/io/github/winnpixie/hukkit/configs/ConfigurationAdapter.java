@@ -1,11 +1,16 @@
 package io.github.winnpixie.hukkit.configs;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public interface ConfigurationAdapter {
-    default Object get(String key) {
+    @Nullable
+    default Object get(@NotNull String key) {
         return get(key, null);
     }
 
-    Object get(String key, Object def);
+    @Nullable
+    Object get(@NotNull String key, @Nullable Object def);
 
-    void set(String key, Object value);
+    void set(@NotNull String key, @Nullable Object value);
 }

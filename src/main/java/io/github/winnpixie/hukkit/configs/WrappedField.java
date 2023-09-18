@@ -34,8 +34,8 @@ public class WrappedField {
         this.owner = owner;
         this.field = field;
 
-        if (!field.canAccess(owner)) {
-            field.trySetAccessible();
+        if (!field.isAccessible()) {
+            field.setAccessible(true);
         }
     }
 

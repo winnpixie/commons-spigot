@@ -62,10 +62,8 @@ public class AnnotatedConfigurationManager {
      */
     public AnnotatedConfigurationManager linkInstance(@NotNull Object owner) {
         for (Field field : owner.getClass().getDeclaredFields()) {
-            if (!field.isAnnotationPresent(Link.class))
-                continue;
-            if (Modifier.isStatic(field.getModifiers()))
-                continue;
+            if (!field.isAnnotationPresent(Link.class)) continue;
+            if (Modifier.isStatic(field.getModifiers())) continue;
 
             this.addWrappedField(new WrappedField(owner, field));
         }
@@ -83,10 +81,8 @@ public class AnnotatedConfigurationManager {
     @NotNull
     public AnnotatedConfigurationManager linkClass(@NotNull Class<?> cls) {
         for (Field field : cls.getDeclaredFields()) {
-            if (!field.isAnnotationPresent(Link.class))
-                continue;
-            if (!Modifier.isStatic(field.getModifiers()))
-                continue;
+            if (!field.isAnnotationPresent(Link.class)) continue;
+            if (!Modifier.isStatic(field.getModifiers())) continue;
 
             this.addWrappedField(new WrappedField(null, field));
         }
@@ -105,8 +101,7 @@ public class AnnotatedConfigurationManager {
     @NotNull
     public AnnotatedConfigurationManager link(@NotNull Object owner) {
         for (Field field : owner.getClass().getDeclaredFields()) {
-            if (!field.isAnnotationPresent(Link.class))
-                continue;
+            if (!field.isAnnotationPresent(Link.class)) continue;
 
             this.addWrappedField(new WrappedField(owner, field));
         }
@@ -124,9 +119,9 @@ public class AnnotatedConfigurationManager {
 
     public void load() {
         for (WrappedField wf : wrappedFields) {
-            if (!wf.tryGet(def -> wf.trySet(adapter.get(wf.getPath(), def)))) {
-                wf.trySet(adapter.get(wf.getPath()));
-            }
+            if (wf.tryGet(def -> wf.trySet(adapter.get(wf.getPath(), def)))) continue;
+
+            wf.trySet(adapter.get(wf.getPath()));
         }
     }
 }
