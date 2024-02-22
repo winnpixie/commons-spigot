@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class TextHelper {
     private static final Pattern HEX_PATTERN = Pattern.compile("#[a-f0-9]{6}", Pattern.CASE_INSENSITIVE);
-    private static final String[][] TAG_TO_CODE = { // Jesus Christ
+    private static final String[][] TAG_TO_CODE = { // Not even God can save me now.
             {"black", "0"},
             {"dark_blue", "1"}, {"darkblue", "1"},
             {"dark_green", "2"}, {"darkgreen", "2"},
