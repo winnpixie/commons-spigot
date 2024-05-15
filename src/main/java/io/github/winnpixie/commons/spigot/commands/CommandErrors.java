@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.commands;
+package io.github.winnpixie.commons.spigot.commands;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;

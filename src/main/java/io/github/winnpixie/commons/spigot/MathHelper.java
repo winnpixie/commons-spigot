@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit;
+package io.github.winnpixie.commons.spigot;
 
 import java.util.concurrent.ThreadLocalRandom;
 

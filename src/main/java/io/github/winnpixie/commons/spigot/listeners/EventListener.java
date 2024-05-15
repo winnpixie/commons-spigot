@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.listeners;
+package io.github.winnpixie.commons.spigot.listeners;
 
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;

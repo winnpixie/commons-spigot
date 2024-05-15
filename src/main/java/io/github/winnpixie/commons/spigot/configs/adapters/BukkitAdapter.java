@@ -1,11 +1,11 @@
-package io.github.winnpixie.hukkit.configs.adapters;
+package io.github.winnpixie.commons.spigot.configs.adapters;
 
-import io.github.winnpixie.hukkit.configs.ConfigurationAdapter;
+import io.github.winnpixie.commons.spigot.configs.IAdapter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BukkitAdapter implements ConfigurationAdapter {
+public class BukkitAdapter implements IAdapter {
     private ConfigurationSection config;
 
     public BukkitAdapter(ConfigurationSection config) {

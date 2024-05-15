@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.io.http;
+package io.github.winnpixie.commons.spigot.io.http;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

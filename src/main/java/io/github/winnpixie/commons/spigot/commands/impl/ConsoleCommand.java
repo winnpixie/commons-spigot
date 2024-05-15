@@ -1,7 +1,7 @@
-package io.github.winnpixie.hukkit.commands.impl;
+package io.github.winnpixie.commons.spigot.commands.impl;
 
-import io.github.winnpixie.hukkit.commands.BaseCommand;
-import io.github.winnpixie.hukkit.commands.CommandErrors;
+import io.github.winnpixie.commons.spigot.commands.BaseCommand;
+import io.github.winnpixie.commons.spigot.commands.CommandErrors;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;

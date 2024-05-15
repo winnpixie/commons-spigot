@@ -1,9 +1,9 @@
-package io.github.winnpixie.hukkit.configs;
+package io.github.winnpixie.commons.spigot.configs;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface ConfigurationAdapter {
+public interface IAdapter {
     @Nullable
     default Object get(@NotNull String key) {
         return get(key, null);

@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit;
+package io.github.winnpixie.commons.spigot;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataAdapterContext;

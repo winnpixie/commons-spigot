@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.io.http;
+package io.github.winnpixie.commons.spigot.io.http;
 
 import java.net.Proxy;
 import java.net.URL;

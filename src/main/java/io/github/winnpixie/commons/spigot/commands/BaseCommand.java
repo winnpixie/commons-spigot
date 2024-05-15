@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.commands;
+package io.github.winnpixie.commons.spigot.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.io.http;
+package io.github.winnpixie.commons.spigot.io.http;
 
 import java.net.MalformedURLException;
 import java.net.Proxy;
@@ -22,7 +22,7 @@ public class HttpClient {
     public HttpClient newRequest() {
         request = new HttpRequest();
 
-        return addHeader("User-Agent", "Hukkit ( https://github.com/winnpixie/hukkit/ )");
+        return addHeader("User-Agent", "wp-http-client (java/http)");
     }
 
     public HttpClient setMethod(HttpMethod method) {

@@ -1,4 +1,4 @@
-package io.github.winnpixie.hukkit.configs;
+package io.github.winnpixie.commons.spigot.configs;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -11,7 +11,6 @@ import java.lang.annotation.Target;
  * Marker annotation for configuration fields
  *
  * @author Hannah
- * @since 0.0.1
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

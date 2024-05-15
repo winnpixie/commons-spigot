@@ -1,6 +1,6 @@
-package io.github.winnpixie.hukkit.io.http;
+package io.github.winnpixie.commons.spigot.io.http;
 
-import io.github.winnpixie.hukkit.io.IOHelper;
+import io.github.winnpixie.commons.spigot.io.IOHelper;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,7 +30,7 @@ public class HttpMethod {
             if (conn != null) conn.disconnect();
         }
     });
-    public static final HttpMethod POST = new HttpMethod("GET", request -> {
+    public static final HttpMethod POST = new HttpMethod("POST", request -> {
         HttpURLConnection conn = null;
         try {
             conn = (HttpURLConnection) request.getUrl().openConnection(request.getProxy());

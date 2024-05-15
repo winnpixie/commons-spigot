@@ -1,11 +1,11 @@
-package io.github.winnpixie.hukkit;
+package io.github.winnpixie.commons.spigot;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import io.github.winnpixie.hukkit.commands.BaseCommand;
-import io.github.winnpixie.hukkit.io.http.HttpClient;
-import io.github.winnpixie.hukkit.listeners.EventListener;
+import io.github.winnpixie.commons.spigot.commands.BaseCommand;
+import io.github.winnpixie.commons.spigot.io.http.HttpClient;
+import io.github.winnpixie.commons.spigot.listeners.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-public class Hukkit {
+public class SpigotHelper {
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static <P extends JavaPlugin> void addListener(Listener listener, P owner) {
