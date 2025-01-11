@@ -8,15 +8,13 @@ public class MathHelper {
     public static boolean isInt(String s) {
         try {
             Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-            // Lazy throw
+            return true;
+        } catch (NumberFormatException e) { // Lazy catch
             return false;
         }
-
-        return true;
     }
 
-    public static int clampInt(int n, int min, int max) {
+    public static int clamp(int n, int min, int max) {
         if (max < min) {
             int swp = max;
             max = min;
@@ -26,26 +24,67 @@ public class MathHelper {
         return n < min ? min : n > max ? max : n;
     }
 
-    public static int absInt(int n) {
+    public static int abs(int n) {
         return n < 0 ? -n : n;
+    }
+
+    public static int min(int a, int b) {
+        return a < b ? a : b;
+    }
+
+    public static int max(int a, int b) {
+        return a > b ? a : b;
     }
 
     public static int getRandomInt(int min, int max) {
         return LOCAL_RANDOM.nextInt(min, max);
     }
 
+    public static boolean isLong(String s) {
+        try {
+            Long.parseLong(s);
+            return true;
+        } catch (NumberFormatException e) { // Lazy catch
+            return false;
+        }
+    }
+
+    public static long clamp(long n, long min, long max) {
+        if (max < min) {
+            long swp = max;
+            max = min;
+            min = swp;
+        }
+
+        return n < min ? min : n > max ? max : n;
+    }
+
+    public static long abs(long n) {
+        return n < 0 ? -n : n;
+    }
+
+    public static long min(long a, long b) {
+        return a < b ? a : b;
+    }
+
+    public static long max(long a, long b) {
+        return a > b ? a : b;
+    }
+
+    public static long getRandomLong(long min, long max) {
+        return LOCAL_RANDOM.nextLong(min, max);
+    }
+
     public static boolean isFloat(String s) {
         try {
             Float.parseFloat(s);
-        } catch (NumberFormatException e) {
-            // Lazy throw
+            return true;
+        } catch (NumberFormatException e) { // Lazy catch
             return false;
         }
-
-        return true;
     }
 
-    public static float clampFloat(float n, float min, float max) {
+    public static float clamp(float n, float min, float max) {
         if (max < min) {
             float swp = max;
             max = min;
@@ -55,16 +94,24 @@ public class MathHelper {
         return n < min ? min : n > max ? max : n;
     }
 
-    public static float absFloat(float n) {
+    public static float abs(float n) {
         return n < 0 ? -n : n;
     }
 
-    public static int floorFloat(float n) {
+    public static float min(float a, float b) {
+        return a < b ? a : b;
+    }
+
+    public static float max(float a, float b) {
+        return a > b ? a : b;
+    }
+
+    public static int floor(float n) {
         int i = (int) n;
         return i < n ? i : i - 1;
     }
 
-    public static int ceilFloat(float n) {
+    public static int ceil(float n) {
         int i = (int) n;
         return i > n ? i : i + 1;
     }
@@ -76,15 +123,13 @@ public class MathHelper {
     public static boolean isDouble(String s) {
         try {
             Double.parseDouble(s);
-        } catch (NumberFormatException e) {
-            // Lazy throw
+            return true;
+        } catch (NumberFormatException e) { // Lazy catch
             return false;
         }
-
-        return true;
     }
 
-    public static double clampDouble(double n, double min, double max) {
+    public static double clamp(double n, double min, double max) {
         if (max < min) {
             double swp = max;
             max = min;
@@ -94,16 +139,24 @@ public class MathHelper {
         return n < min ? min : n > max ? max : n;
     }
 
-    public static double absDouble(double n) {
+    public static double abs(double n) {
         return n < 0 ? -n : n;
     }
 
-    public static int floorDouble(double n) {
+    public static double min(double a, double b) {
+        return a < b ? a : b;
+    }
+
+    public static double max(double a, double b) {
+        return a > b ? a : b;
+    }
+
+    public static int floor(double n) {
         int i = (int) n;
         return i < n ? i : i - 1;
     }
 
-    public static int ceilDouble(double n) {
+    public static int ceil(double n) {
         int i = (int) n;
         return i > n ? i : i + 1;
     }

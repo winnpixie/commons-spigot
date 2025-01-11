@@ -34,7 +34,7 @@ public class TextHelper {
     };
 
     public static String formatText(String text) {
-        return convertHexColors(convertFormatTags(convertFormatCodes(text)));
+        return convertHexCodes(convertFormatTags(convertFormatCodes(text)));
     }
 
     public static String convertFormatTags(String text) {
@@ -50,7 +50,7 @@ public class TextHelper {
     }
 
     // Converts #RRGGBB to &x&R&R&G&G&B&B
-    public static String convertHexColors(String text) {
+    public static String convertHexCodes(String text) {
         StringBuilder output = new StringBuilder();
 
         for (int i = 0; i < text.length(); i++) {

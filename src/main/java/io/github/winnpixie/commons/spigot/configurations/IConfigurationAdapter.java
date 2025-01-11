@@ -1,9 +1,14 @@
-package io.github.winnpixie.commons.spigot.configs;
+package io.github.winnpixie.commons.spigot.configurations;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface IAdapter {
+public interface IConfigurationAdapter<T> {
+    @Nullable
+    T getConfiguration();
+
+    void setConfiguration(@Nullable T configuration);
+
     @Nullable
     default Object get(@NotNull String key) {
         return get(key, null);

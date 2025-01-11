@@ -1,4 +1,4 @@
-package io.github.winnpixie.commons.spigot.configs;
+package io.github.winnpixie.commons.spigot.configurations;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -25,7 +25,7 @@ public class FieldLinker {
     public FieldLinker(Object owner, Field field) {
         // Ensure field is not final.
         if (Modifier.isFinal(field.getModifiers())) {
-            throw new IllegalArgumentException("A field annotated with @Link can NOT be final!");
+            throw new IllegalArgumentException("A field annotated with @Link can not be final!");
         }
 
         this.path = field.getAnnotation(Link.class).path();
@@ -53,9 +53,8 @@ public class FieldLinker {
             return true;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            return false;
         }
-
-        return false;
     }
 
     public boolean trySet(Object value) {
@@ -64,8 +63,7 @@ public class FieldLinker {
             return true;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
+            return false;
         }
-
-        return false;
     }
 }

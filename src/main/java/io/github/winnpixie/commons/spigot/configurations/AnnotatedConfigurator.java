@@ -1,4 +1,4 @@
-package io.github.winnpixie.commons.spigot.configs;
+package io.github.winnpixie.commons.spigot.configurations;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,46 +10,46 @@ import java.util.List;
 
 /**
  * An API that allows configuration values supplied via a
- * {@link IAdapter} to be quickly and easily accessed through
+ * {@link IConfigurationAdapter} to be quickly and easily accessed through
  * standard Java fields linked by the {@link Link} annotation.
  *
  * @author Hannah
  */
-public class AnnotationConfiguration {
-    private IAdapter adapter;
+public class AnnotatedConfigurator {
+    private IConfigurationAdapter adapter;
 
     private final List<FieldLinker> linkers = new ArrayList<>(); // or CopyOnWriteArrayList, concurrency go brrrr
 
     /**
-     * Constructs an instance of {@link AnnotationConfiguration} without an {@link IAdapter}.
+     * Constructs an instance of {@link AnnotatedConfigurator} without an {@link IConfigurationAdapter}.
      */
-    public AnnotationConfiguration() {
+    public AnnotatedConfigurator() {
     }
 
     /**
-     * Constructs an instance of {@link AnnotationConfiguration} with an underlying {@link IAdapter}.
+     * Constructs an instance of {@link AnnotatedConfigurator} with an underlying {@link IConfigurationAdapter}.
      *
-     * @param adapter The {@link IAdapter} to use.
+     * @param adapter The {@link IConfigurationAdapter} to use.
      */
-    public AnnotationConfiguration(@NotNull IAdapter adapter) {
+    public AnnotatedConfigurator(@NotNull IConfigurationAdapter adapter) {
         this.adapter = adapter;
     }
 
     /**
-     * @return The underlying {@link IAdapter} this instance is using.
+     * @return The underlying {@link IConfigurationAdapter} this instance is using.
      */
     @Nullable
-    public IAdapter getAdapter() {
+    public IConfigurationAdapter getAdapter() {
         return adapter;
     }
 
     /**
-     * Set the underlying {@link IAdapter} for this instance.
+     * Set the underlying {@link IConfigurationAdapter} for this instance.
      *
-     * @param adapter The {@link IAdapter} to use.
-     * @return The {@link AnnotationConfiguration} this method was invoked from.
+     * @param adapter The {@link IConfigurationAdapter} to use.
+     * @return The {@link AnnotatedConfigurator} this method was invoked from.
      */
-    public AnnotationConfiguration setAdapter(@NotNull IAdapter adapter) {
+    public AnnotatedConfigurator setAdapter(@NotNull IConfigurationAdapter adapter) {
         this.adapter = adapter;
         return this;
     }
@@ -64,9 +64,9 @@ public class AnnotationConfiguration {
      *
      * @param obj                 The class to link field data from
      * @param excludeStaticFields Whether to exclude static fields from linking
-     * @return The {@link AnnotationConfiguration} this method was invoked from
+     * @return The {@link AnnotatedConfigurator} this method was invoked from
      */
-    public AnnotationConfiguration link(@NotNull Object obj, boolean excludeStaticFields) {
+    public AnnotatedConfigurator link(@NotNull Object obj, boolean excludeStaticFields) {
         for (Field field : obj.getClass().getDeclaredFields()) {
             if (!field.isAnnotationPresent(Link.class)) continue;
             if (excludeStaticFields && Modifier.isStatic(field.getModifiers())) continue;
@@ -81,10 +81,10 @@ public class AnnotationConfiguration {
      * Creates {@link FieldLinker}s from the specified class's static fields.
      *
      * @param cls The class to link field data from
-     * @return The {@link AnnotationConfiguration} this method was invoked from
+     * @return The {@link AnnotatedConfigurator} this method was invoked from
      */
     @NotNull
-    public AnnotationConfiguration linkClass(@NotNull Class<?> cls) {
+    public AnnotatedConfigurator linkClass(@NotNull Class<?> cls) {
         for (Field field : cls.getDeclaredFields()) {
             if (!field.isAnnotationPresent(Link.class)) continue;
             if (!Modifier.isStatic(field.getModifiers())) continue;

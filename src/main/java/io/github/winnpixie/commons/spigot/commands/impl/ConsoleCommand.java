@@ -19,17 +19,17 @@ public abstract class ConsoleCommand<P extends JavaPlugin> extends BaseCommand<P
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof ConsoleCommandSender)) {
+        if (!(sender instanceof ConsoleCommandSender console)) {
             sender.spigot().sendMessage(CommandErrors.CONSOLE_ONLY);
             return true;
         }
 
-        return execute((ConsoleCommandSender) sender, command, label, args);
+        return execute(console, command, label, args);
     }
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        return sender instanceof ConsoleCommandSender ? tabComplete((ConsoleCommandSender) sender, command, alias, args) : Collections.emptyList();
+        return sender instanceof ConsoleCommandSender console ? tabComplete(console, command, alias, args) : Collections.emptyList();
     }
 
     public abstract boolean execute(@NotNull ConsoleCommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args);

@@ -7,14 +7,17 @@ import java.util.function.Consumer;
 
 public class ItemHelper {
     // Shamelessly stolen and re-implemented from Paper API's javadocs
-    public static void editMetaData(ItemStack stack, Consumer<ItemMeta> consumer) {
-        editMetaData(stack, ItemMeta.class, consumer);
+    public static boolean editMeta(ItemStack stack, Consumer<? super ItemMeta> consumer) {
+        return editMeta(stack, ItemMeta.class, consumer);
     }
 
     // Shamelessly stolen and re-implemented from Paper API's javadocs
-    public static <T extends ItemMeta> void editMetaData(ItemStack stack, Class<T> metaCls, Consumer<T> consumer) {
-        T metadata = metaCls.cast(stack.getItemMeta());
-        consumer.accept(metadata);
-        stack.setItemMeta(metadata);
+    public static <T extends ItemMeta> boolean editMeta(ItemStack stack, Class<T> dataCls, Consumer<? super T> consumer) {
+        ItemMeta meta = stack.getItemMeta();
+        if (!dataCls.isInstance(meta)) return false;
+
+        consumer.accept(dataCls.cast(meta));
+        stack.setItemMeta(meta);
+        return true;
     }
 }

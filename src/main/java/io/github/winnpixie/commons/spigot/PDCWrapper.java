@@ -23,12 +23,12 @@ public class PDCWrapper<P extends JavaPlugin> {
     }
 
     @Nullable
-    public <T, Z> Z get(String key, PersistentDataType<T, Z> type) {
+    public <T, V> V get(String key, PersistentDataType<T, V> type) {
         return container.get(getKeyByName(key), type);
     }
 
     @NotNull
-    public <T, Z> Z get(String key, PersistentDataType<T, Z> type, Z fallback) {
+    public <T, V> V get(String key, PersistentDataType<T, V> type, V fallback) {
         return container.getOrDefault(getKeyByName(key), type, fallback);
     }
 
@@ -138,7 +138,7 @@ public class PDCWrapper<P extends JavaPlugin> {
         return get(key, Type.DOUBLE_ARRAY, defaultValue);
     }
 
-    public <T, Z> void set(String key, PersistentDataType<T, Z> type, Z value) {
+    public <T, V> void set(String key, PersistentDataType<T, V> type, V value) {
         container.set(getKeyByName(key), type, value);
     }
 
@@ -206,7 +206,7 @@ public class PDCWrapper<P extends JavaPlugin> {
         return false;
     }
 
-    public <T, Z> boolean has(String key, PersistentDataType<T, Z> type) {
+    public <T, V> boolean has(String key, PersistentDataType<T, V> type) {
         return container.has(getKeyByName(key), type);
     }
 
@@ -220,7 +220,7 @@ public class PDCWrapper<P extends JavaPlugin> {
         return KEY_CACHE.computeIfAbsent(key, v -> new NamespacedKey(plugin, key));
     }
 
-    public interface Type<T, Z> extends PersistentDataType<T, Z> {
+    public interface Type<T, V> extends PersistentDataType<T, V> {
         PersistentDataType<Byte, Boolean> BOOLEAN = new PersistentDataType<Byte, Boolean>() {
             @NotNull
             @Override

@@ -1,24 +1,27 @@
-package io.github.winnpixie.commons.spigot.configs.adapters;
+package io.github.winnpixie.commons.spigot.configurations.adapters;
 
-import io.github.winnpixie.commons.spigot.configs.IAdapter;
+import io.github.winnpixie.commons.spigot.configurations.IConfigurationAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Properties;
 
-public class PropertiesAdapter implements IAdapter {
+public class PropertiesConfigurationAdapter implements IConfigurationAdapter<Properties> {
     private Properties properties;
 
-    public PropertiesAdapter(Properties properties) {
+    public PropertiesConfigurationAdapter(@Nullable Properties properties) {
         this.properties = properties;
     }
 
-    public Properties getProperties() {
+    @Override
+    @Nullable
+    public Properties getConfiguration() {
         return properties;
     }
 
-    public void setProperties(Properties properties) {
-        this.properties = properties;
+    @Override
+    public void setConfiguration(@Nullable Properties configuration) {
+        this.properties = configuration;
     }
 
     @Override

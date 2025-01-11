@@ -19,17 +19,17 @@ public abstract class PlayerCommand<P extends JavaPlugin> extends BaseCommand<P>
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.spigot().sendMessage(CommandErrors.PLAYERS_ONLY);
             return true;
         }
 
-        return execute((Player) sender, command, label, args);
+        return execute(player, command, label, args);
     }
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        return sender instanceof Player ? tabComplete((Player) sender, command, alias, args) : Collections.emptyList();
+        return sender instanceof Player player ? tabComplete(player, command, alias, args) : Collections.emptyList();
     }
 
     public abstract boolean execute(@NotNull Player sender, @NotNull Command command, @NotNull String label, @NotNull String[] args);

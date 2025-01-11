@@ -1,4 +1,4 @@
-package io.github.winnpixie.commons.spigot.configs;
+package io.github.winnpixie.commons.spigot.configurations;
 
 import org.jetbrains.annotations.NotNull;
 
