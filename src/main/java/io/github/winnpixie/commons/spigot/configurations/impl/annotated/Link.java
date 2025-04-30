@@ -1,4 +1,4 @@
-package io.github.winnpixie.commons.spigot.configurations;
+package io.github.winnpixie.commons.spigot.configurations.impl.annotated;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,18 +9,16 @@ import java.lang.annotation.Target;
 
 /**
  * Marker annotation for configuration fields
- *
- * @author Hannah
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface Link {
     /**
-     * The (full) path the configuration key.
-     * i.e. {@code a.b.c}, where {@code a.b} is the path and {@code c} = the name of
-     * the key
+     * The full path of a configuration key.<br />
+     * (i.e. {@code a.b.c}, where {@code a.b} is the path and {@code c} = the name of
+     * the key)
      *
-     * @return The full path
+     * @return The full path to a configuration key.
      */
     @NotNull String path();
 }

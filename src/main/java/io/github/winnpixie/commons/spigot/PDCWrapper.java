@@ -195,12 +195,10 @@ public class PDCWrapper<P extends JavaPlugin> {
     }
 
     public boolean has(String key) {
-        NamespacedKey realKey = getKeyByName(key);
+        NamespacedKey nsKey = getKeyByName(key);
 
         for (NamespacedKey keyEntry : container.getKeys()) {
-            if (!keyEntry.equals(realKey)) continue;
-
-            return true;
+            if (keyEntry.equals(nsKey)) return true;
         }
 
         return false;
@@ -217,7 +215,7 @@ public class PDCWrapper<P extends JavaPlugin> {
 
     @NotNull
     private NamespacedKey getKeyByName(String key) {
-        return KEY_CACHE.computeIfAbsent(key, v -> new NamespacedKey(plugin, key));
+        return KEY_CACHE.computeIfAbsent(key, k -> new NamespacedKey(plugin, k));
     }
 
     public interface Type<T, V> extends PersistentDataType<T, V> {
@@ -246,7 +244,7 @@ public class PDCWrapper<P extends JavaPlugin> {
                 return primitive == 1;
             }
         };
-        PersistentDataType<float[], float[]> FLOAT_ARRAY = new PersistentDataType<float[], float[]>() {
+        PersistentDataType<float[], float[]> FLOAT_ARRAY = new PersistentDataType<>() {
             @NotNull
             @Override
             public Class<float[]> getPrimitiveType() {
@@ -271,7 +269,7 @@ public class PDCWrapper<P extends JavaPlugin> {
                 return primitive;
             }
         };
-        PersistentDataType<double[], double[]> DOUBLE_ARRAY = new PersistentDataType<double[], double[]>() {
+        PersistentDataType<double[], double[]> DOUBLE_ARRAY = new PersistentDataType<>() {
             @NotNull
             @Override
             public Class<double[]> getPrimitiveType() {
@@ -286,7 +284,7 @@ public class PDCWrapper<P extends JavaPlugin> {
 
             @NotNull
             @Override
-            public double[] toPrimitive(double[] complex, PersistentDataAdapterContext context) {
+            public double[] toPrimitive(@NotNull double[] complex, @NotNull PersistentDataAdapterContext context) {
                 return complex;
             }
 

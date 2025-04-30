@@ -23,4 +23,8 @@ public class CommandErrors {
     public static final BaseComponent[] LACKS_PERMISSIONS = new ComponentBuilder("Missing required permission(s) to execute action.")
             .color(ChatColor.RED)
             .create();
+
+    public static BaseComponent[] custom(String warning) {
+        return new ComponentBuilder(warning).color(ChatColor.RED).create();
+    }
 }

@@ -5,7 +5,7 @@ import net.md_5.bungee.api.ChatColor;
 import java.util.regex.Pattern;
 
 public class TextHelper {
-    private static final Pattern HEX_PATTERN = Pattern.compile("#[a-f0-9]{6}", Pattern.CASE_INSENSITIVE);
+    private static final Pattern HEX_PATTERN = Pattern.compile("#[A-F\\d]{6}", Pattern.CASE_INSENSITIVE);
     private static final String[][] TAG_TO_CODE = { // Not even God can save me now.
             {"black", "0"},
             {"dark_blue", "1"}, {"darkblue", "1"},
@@ -34,39 +34,40 @@ public class TextHelper {
     };
 
     public static String formatText(String text) {
-        return convertHexCodes(convertFormatTags(convertFormatCodes(text)));
-    }
-
-    public static String convertFormatTags(String text) {
-        for (String[] codes : TAG_TO_CODE) {
-            text = text.replace(String.format("<%s>", codes[0]), String.format("\u00A7%s", codes[1]));
-        }
-
-        return text;
+        return convertHexTags(convertFormatTags(convertFormatCodes(text)));
     }
 
     public static String convertFormatCodes(String text) {
         return ChatColor.translateAlternateColorCodes('&', text);
     }
 
-    // Converts #RRGGBB to &x&R&R&G&G&B&B
-    public static String convertHexCodes(String text) {
+    public static String convertFormatTags(String text) {
+        for (String[] codes : TAG_TO_CODE) {
+            text = text.replace("<%s>".formatted(codes[0]), "\u00A7%s".formatted(codes[1]));
+        }
+
+        return text;
+    }
+
+    // Converts &#RRGGBB and <#RRGGBB> to &x&R&R&G&G&B&B
+    public static String convertHexTags(String text) {
+        int len = text.length();
         StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < len; i++) {
             char chr = text.charAt(i);
             String hex = "";
 
             switch (chr) {
                 case '\u00A7':
                 case '&':
-                    if (i + 7 < text.length()) {
+                    if (i + 7 < len) {
                         hex = text.substring(i + 1, i + 8);
                     }
 
                     break;
                 case '<':
-                    if (i + 8 < text.length() && text.charAt(i + 8) == '>') {
+                    if (i + 8 < len && text.charAt(i + 8) == '>') {
                         hex = text.substring(i + 1, i + 8);
                     }
 
